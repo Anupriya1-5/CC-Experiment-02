@@ -1,7 +1,5 @@
 ## Performance Analysis of Virtual Machines and Containers
 
-## Performance Comparison of Virtual Machines and Docker Containers
-
 ---
 
 # 1. Objectives
