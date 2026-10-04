@@ -1,4 +1,4 @@
-## Performance Analysis of Virtual Machines and Containers
+# Performance Analysis of Virtual Machines and Containers
 
 ---
 
@@ -104,20 +104,20 @@ The overall benchmark results obtained from the VM and Docker container are summ
 
 The CPU benchmark was performed using **Sysbench** with 2 threads and a 30-second test duration.
 
-### Result
+## Result
 
 | Environment | CPU Throughput |
 |---|---:|
 | **Virtual Machine** | 1668.10 events/sec |
 | **Docker Container** | **1751.35 events/sec** |
 
-### Observation
+## Observation
 
 The Docker container achieved a slightly higher CPU throughput of **1751.35 events/sec** compared with **1668.10 events/sec** for the VM in this experiment.
 
-### Performance Graph
+## Performance Graph
 
-![CPU Comparison](results/graphs/cpu_comparison.png)
+![CPU Comparison](results/cpu_comparison.png)
 
 ---
 
@@ -131,13 +131,13 @@ CPU scalability was evaluated by increasing the number of CPU threads from **1 t
 | 2 | **1661.66** | 1178.51 |
 | 4 | 1563.64 | **1778.05** |
 
-### Observation
+## Observation
 
 The results show that CPU throughput does not increase linearly with thread count. Since the VM has **2 vCPUs**, the 4-thread test introduces thread oversubscription.
 
-### Performance Graph
+## Performance Graph
 
-![CPU Scalability](results/graphs/cpu_scalability.png)
+![CPU Scalability](results/cpu_scalability.png)
 
 ---
 
@@ -145,20 +145,20 @@ The results show that CPU throughput does not increase linearly with thread coun
 
 The memory benchmark was performed using **Sysbench** with a **1 MiB block size**, **2 GiB total operation size**, and **2 threads**.
 
-### Result
+## Result
 
 | Environment | Memory Throughput |
 |---|---:|
 | **Virtual Machine** | **23629.16 MiB/sec** |
 | **Docker Container** | 11496.33 MiB/sec |
 
-### Observation
+## Observation
 
 The VM produced higher memory throughput than the Docker container in this experiment.
 
-### Performance Graph
+## Performance Graph
 
-![Memory Comparison](results/graphs/memory_comparison.png)
+![Memory Comparison](results/memory_comparison.png)
 
 ---
 
@@ -166,14 +166,14 @@ The VM produced higher memory throughput than the Docker container in this exper
 
 The sequential write benchmark was performed using **fio** with a **1 GiB test file**, **1 MiB block size**, direct I/O, and a 30-second test.
 
-### Result
+## Result
 
 | Environment | Disk Throughput |
 |---|---:|
 | **Virtual Machine** | 449.60 MiB/sec |
 | **Docker Container** | **553.20 MiB/sec** |
 
-### Observation
+## Observation
 
 The Docker container achieved higher disk throughput than the VM in this experiment.
 
@@ -183,9 +183,9 @@ One VM disk run produced an unusually low result and lasted significantly longer
 results/raw/disk/vm/
 ```
 
-### Performance Graph
+## Performance Graph
 
-![Disk Comparison](results/graphs/disk_comparison.png)
+![Disk Comparison](results/disk_comparison.png)
 
 ---
 
@@ -193,14 +193,14 @@ results/raw/disk/vm/
 
 The network benchmark was performed using **iperf3** for 30 seconds.
 
-### Result
+## Result
 
 | Environment | Network Throughput |
 |---|---:|
 | **Virtual Machine** | **44.0 Gbits/sec** |
 | **Docker Container** | 40.5 Gbits/sec |
 
-### Observation
+## Observation
 
 The VM achieved higher measured network throughput than the Docker container in this experiment.
 
@@ -208,9 +208,9 @@ The Docker test used the **Docker bridge network**, which resulted in a differen
 
 This is a local VM-interface benchmark and does not represent Internet bandwidth.
 
-### Performance Graph
+## Performance Graph
 
-![Network Comparison](results/graphs/network_comparison.png)
+![Network Comparison](results/network_comparison.png)
 
 ---
 
@@ -220,28 +220,28 @@ The application-level benchmark was performed using **ApacheBench (ab)** with a 
 
 The `/health` endpoint was tested using:
 
-* 10,000 requests
-* Concurrency: 100
+* **10,000 requests**
+* **Concurrency: 100**
 
 The `/compute` endpoint was tested using:
 
-* 1,000 requests
-* Concurrency: 10
+* **1,000 requests**
+* **Concurrency: 10**
 
-### Result
+## Result
 
 | Environment | Requests/sec |
 |---|---:|
 | **Virtual Machine** | **3130.57** |
 | **Docker Container** | 1818.79 |
 
-### Observation
+## Observation
 
 The VM achieved higher API throughput than the Docker container in the combined API benchmark results used for this experiment.
 
-### Performance Graph
+## Performance Graph
 
-![API Comparison](results/graphs/api_comparison.png)
+![API Comparison](results/api_comparison.png)
 
 Raw API results are stored in:
 
@@ -262,13 +262,13 @@ API scalability was evaluated using ApacheBench with the `/health` endpoint and 
 | 50 | 1352.61 | **1758.26** |
 | 100 | 1387.78 | **2006.91** |
 
-### Observation
+## Observation
 
 The results show that API throughput changes with increasing concurrency. In this experiment, the Docker container achieved higher throughput at the higher concurrency levels.
 
-### Performance Graph
+## Performance Graph
 
-![API Scalability](results/graphs/api_scalability.png)
+![API Scalability](results/api_scalability.png)
 
 Raw scalability results are stored in:
 
@@ -325,14 +325,13 @@ vm-vs-container-performance/
 │   └── Dockerfile
 │
 ├── results/
-│   ├── graphs/
-│   │   ├── api_comparison.png
-│   │   ├── api_scalability.png
-│   │   ├── cpu_comparison.png
-│   │   ├── cpu_scalability.png
-│   │   ├── disk_comparison.png
-│   │   ├── memory_comparison.png
-│   │   └── network_comparison.png
+│   ├── api_comparison.png
+│   ├── api_scalability.png
+│   ├── cpu_comparison.png
+│   ├── cpu_scalability.png
+│   ├── disk_comparison.png
+│   ├── memory_comparison.png
+│   ├── network_comparison.png
 │   │
 │   ├── processed/
 │   │   └── api_scalability.csv
